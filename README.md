@@ -1,6 +1,6 @@
 # dmFromValidate
 自动表单验证
-##初始化
+## 初始化
      $('#tab-protocol').validator({type:'',data:[
                 {validType:'activityNo',valid:'isNonEmpty',errorMsg:'不能为空'},
                 {validType:'profitScale',valid:'isNonEmpty||isDecimal:2',errorMsg:'不能为空||只能输入数值且保留两位小数'}
