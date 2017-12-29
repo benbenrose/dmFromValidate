@@ -24,6 +24,6 @@
                 $('#tab-protocol').validator('changeValue','pageManage');//为了兼容INput；改变某一个字段触发验证
 
                 <br>
-                input type="hidden" data-valid="goodsName" //跳过验证
+    input type="hidden" data-valid="goodsName" //跳过验证
 #### dom
 <input class="form-control" type="text" data-valid="age" >
