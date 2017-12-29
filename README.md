@@ -26,4 +26,6 @@
                 <br>
     input type="hidden" data-valid="goodsName" //跳过验证
 #### dom
-<input class="form-control" type="text" data-valid="age" >
+'''
+    <input class="form-control" type="text" data-valid="age" >
+    '''
