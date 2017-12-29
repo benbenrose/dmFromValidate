@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkbox radio demo</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<!-- bootstrap样式-->
+<div>
+    <table class="table table-bordered table-striped table-hover" >
+        <caption >dmFromValidate API</caption>
+        <thead>
+        <tr class="rtl-table-header rtl-goods-table-tr">
+            <th class="mw150">功能</th>
+            <th class="mw110">使用方法</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr >
+            <td>初始化</td>
+            <td>
+                $('#tab-protocol').validator({type:'',data:[
+                {validType:'activityNo',valid:'isNonEmpty',errorMsg:'不能为空'},
+                {validType:'profitScale',valid:'isNonEmpty||isDecimal:2',errorMsg:'不能为空||只能输入数值且保留两位小数'}
+                {validType:'limitStartDate',valid:'greaterThanEqual:limitEndDate/limitStartDate',errorMsg:'开始时间必须小于截止时间'},
+                {validType:'limitEndDate',valid:'greaterThanEqual:limitEndDate/limitStartDate',errorMsg:'截止时间必须大于开始时间'},
+                ]});
+                <br>
+                type:''/pop:table表单编辑提示
+                <br>
+                validType:对应HTMLdata-valid 必须
+                <br>
+                valid:isNonEmpty/minLength/maxLength/isMobile/isEmail/between/onlyEn/onlyZh/onlyNum/isDecimal(1-4)/onlyInt
+                /greaterThan/greaterThanEqual
+            </td>
+        </tr>
+        <tr >
+            <td>按钮触发 表单提交验证</td>
+            <td>
+                $('#tab-protocol').one('valid.dm.validate',function (a) {
+                console.log(a.isValid)//true/false
+                }).validator('submitValid')
+                //注：如果是table popo 要给每个tr作用域validator('submitValid'，this)
+                <br>
+                $('#tab-protocol').validator('validInfoText', [{validType:'activityNo',errorMsg:'活动号无效'}]);
+                <br>
+                $('#tab-protocol').validator('cleanMsg');//清除全部
+                <br>
+                $('#tab-protocol').validator('changeValue','pageManage');//为了兼容INput；改变某一个字段触发验证
+
+                <br>
+                input type="hidden" data-valid="goodsName" //跳过验证
+            </td>
+        </tr>
+        <tr >
+            <td>源码路径</td>
+            <td>
+                require('base/common/lib/rtl/dmFromValidate');
+            </td>
+        </tr>
+        <tr >
+            <td>DEMO</td>
+            <td>
+                <div class="form-horizontal" id="validTest">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group row">
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 control-label">不能空&不能小于6位</label>
+                            <div class="col-xs-6 col-sm-6 col-md-8 col-lg-6">
+                                <input class="form-control" type="text"  data-valid="test1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group row">
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 control-label">数值&保留两位&不能空</label>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <input class="form-control" type="text" data-valid="test2" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group row">
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 control-label">数值&不能空</label>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <input class="form-control" type="text"  data-valid="test3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group row">
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 control-label">开始时间</label>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 rtl-date-icon">
+                                <input type="text" class="form-control " id="startTime" data-valid="test4" maxlength="10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group row">
+                            <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6 control-label">截止时间</label>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 rtl-date-icon">
+                                <input type="text" class="form-control " id="endTime"  data-valid="test5" maxlength="10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td>tableDemo</td>
+            <td>
+                <table class="table table-condensed validTestTable">
+                    <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td class="active"> <input class="form-control" type="text" data-valid="name" ></td>
+                        <td class="success"><input class="form-control" type="text" data-valid="sex" ></td>
+                        <td class="warning"><input class="form-control" type="text" data-valid="age" ></td>
+                        <td class="warning"><button class="btn btn-save">保存验证</button><span class="text-info"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="active"> <input class="form-control" type="text" data-valid="name" ></td>
+                        <td class="success"><input class="form-control" type="text" data-valid="sex" ></td>
+                        <td class="warning"><input class="form-control" type="text" data-valid="age" ></td>
+                        <td class="warning"><button class="btn btn-save">保存验证</button><span class="text-info"></span></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="./js/index.js"></script>
+<script src="./js/dmFromValidate.js"></script>
+</html>
