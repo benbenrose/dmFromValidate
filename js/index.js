@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
     $('#validTest').validator({type:'',data:[
-        {validType:'test1',valid:'isNonEmpty||maxLength:6',errorMsg:'不能为空||不能小于6位'},
+        {validType:'test1',valid:'isNonEmpty||minLength:6',errorMsg:'不能为空||不能小于6位'},
         {validType:'test2',valid:'isNonEmpty||isDecimal:2',errorMsg:'不能为空||只能输入数值且保留两位小数'},
         {validType:'test3',valid:'isNonEmpty||onlyNum',errorMsg:'不能为空||只能输入数值'},
         {validType:'test4',valid:'greaterThanEqual:test5/test4',errorMsg:'开始时间必须小于截止时间'},

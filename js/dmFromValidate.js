@@ -18,14 +18,14 @@
                         }
                     },
                     minLength: function(value, length, errorMsg) {
-                        //大于
+                        //小于
                         if (value.length < length) {
                             return errorMsg;
                         }
                     },
                     maxLength: function(value, length, errorMsg) {
-                        //小于
-                        if (value.length < length) {
+                        //大于
+                        if ( length < value.length) {
                             return errorMsg;
                         }
                     },
